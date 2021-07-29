@@ -6,9 +6,27 @@
 </p>
 
 <p>
+  <strong>Category Id:</strong>
+  <%= params[:id] %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @category.description %>
 </p>
 
+<p>
+  <strong>Related articles:</strong>
+  <% @articles.each do |article| %>
+    <br>
+    <tr>
+      <td><%= article.name %></td>
+      <td><%= article.id %></td>
+      <td><%= link_to 'Show', article %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</p>
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
