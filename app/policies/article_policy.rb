@@ -1,4 +1,4 @@
-class CategoryPolicy < ApplicationPolicy
+class ArticlePolicy < ApplicationPolicy
   def edit?
     user.is_admin? if user
   end

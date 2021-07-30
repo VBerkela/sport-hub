@@ -1,6 +1,6 @@
 <div class="header">
-  <div class="header-first">
-    Sports Hub
+  <div class="header-first" onclick="window.location='/'">
+    <%= t(:project) %>
   </div>
   <div class="header-second">
     <input type="search" placeholder="Search">
@@ -12,9 +12,24 @@
     <a href="#" class="fa fa-google"></a>
   </div>
   <div class="header-fourth">
-    Sign in
+    <% if user_signed_in? %>
+      <div class="dropdown">
+        <button class="dropbtn"><%= current_user.full_name %> <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content">
+          <%= link_to 'Edit Account', edit_user_registration_path %>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+    <% else %>
+      <%= link_to 'Sign Up', new_user_registration_path %> <span> or if you have account </span> <%= link_to 'Sign In', new_user_session_path %>
+    <% end %>
   </div>
   <div class="header-fifth">
-    EN
+    <% if I18n.locale == I18n.default_locale %>
+      <%= link_to "UA", { :locale=>'ua' } %>
+    <% else %>
+      <%= link_to "EN", { :locale=>'en' } %>
+    <%end%>
   </div>
 </div>

@@ -1,7 +1,70 @@
 <h1>Main page</h1>
 <% if user_signed_in? %>
   <h3>Welcome!</h3>
+  <h1><%= t(:hello) %></h1>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to 'Sign Up', new_user_registration_path %> <span> or if you have account </span> <%= link_to 'Sign In', new_user_session_path %>
 <% end %>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <% @articles.each do |article| %>
+    <div class="mySlides fade">
+      <div class="numbertext"><%= article.id %> / <%=@articles_counter %></div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVJRd6TbbQKVxICTorQVN0H3b26sbY0yaVNw&usqp=CAU" style="width:100%">
+      <div class="text"><%= article.description %> / <%= article.name %></div>
+    </div>
+  <% end %>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <% for i in 1..@articles_counter %>
+  <span class="dot" onclick="currentSlide(<% i %>)"></span>
+  <% end %>
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+<!--<div class="main-slider">-->
+<!--  <div>-->
+<!--    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVJRd6TbbQKVxICTorQVN0H3b26sbY0yaVNw&usqp=CAU">-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQygEYElKAIT3-NWS8Hos1jpmWBxJW2LYNBqg&usqp=CAU">-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <img src="https://cdn2.unrealengine.com/2ksmkt-nba2k21-epic-set-up-assets-std-cg-blog-share-image-1920x1080-1920x1080-d46c9713e326.jpg">-->
+<!--  </div>-->
+<!--</div>-->

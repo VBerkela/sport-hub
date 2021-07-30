@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
+<div class="card" style="width: 50%;">
+  <%= image_tag(@category.image, class: 'card-img-top') if @category.image.attached?  %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @category.name %></h5>
+    <p class="card-text"><%= @category.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @articles.each do |article| %>
+      <li class="list-group-item"><td><%= link_to article.name, article %></td></li>
+    <% end %>
+  </ul>
+  <div class="card-body">
+    <%= link_to 'Edit', edit_category_path(@category) %>
+    <%= link_to 'Back', categories_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
