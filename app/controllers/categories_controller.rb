@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
-    @articles = Article.all.joins(:category).where(categories: { id: params[:id] })
+    @articles = Article.joins(:category).where(categories: { id: params[:id] }).all
   end
 
   # GET /categories/new
@@ -51,6 +51,7 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
+    authorize @category
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
@@ -66,6 +67,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:name, :description)
+      params.require(:category).permit(:name, :description, :image)
     end
 end

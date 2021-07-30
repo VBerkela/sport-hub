@@ -82,7 +82,7 @@ body {
 }
 .header-fourth {
     width: 20%;
-    line-height: 83px;
+    line-height: 55px;
     text-align: center;
     font-family: Open Sans;
     font-style: normal;
@@ -220,3 +220,7 @@ div.content {
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: transparent;}
+
+input[type="search"] {
+    border: none;
+}

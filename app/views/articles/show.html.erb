@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
+<p class="article-name">
   <%= @article.name %>
 </p>
-
-<p>
-  <strong>Description:</strong>
+<div class="card-with-image">
+  <% if @article.image.attached? %>
+    <%= image_tag(@article.image, class:'article-image')  %>
+    <span class="card-on-image">
+      <p class="published">Published / <%= @article.created_at %></p>
+      <p class="card-article-name"><%= @article.name %></p>
+      <p class="card-article-short-text"><%= @article.description.first(80) %>...</p>
+    </span>
+  <% else %>
+  <p>Empty</p>
+<% end %>
+</div>
+<p class="article-text">
   <%= @article.description %>
 </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @article.author %>
-</p>
-
-<p>
-  <strong>Is hidden:</strong>
-  <%= @article.is_hidden %>
-</p>
+<!--<p>-->
+<!--  <strong>Author:</strong>-->
+  <%#= @article.author %>
+<!--</p>-->
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>

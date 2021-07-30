@@ -1,32 +1,18 @@
 <p id="notice"><%= notice %></p>
+<div class="card" style="width: 50%;">
+  <%= image_tag(@category.image, class: 'card-img-top') if @category.image.attached?  %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @category.name %></h5>
+    <p class="card-text"><%= @category.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @articles.each do |article| %>
+      <li class="list-group-item"><td><%= link_to article.name, article %></td></li>
+    <% end %>
+  </ul>
+  <div class="card-body">
+    <%= link_to 'Edit', edit_category_path(@category) %>
+    <%= link_to 'Back', categories_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<p>
-  <strong>Category Id:</strong>
-  <%= params[:id] %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
-
-<p>
-  <strong>Related articles:</strong>
-  <% @articles.each do |article| %>
-    <br>
-    <tr>
-      <td><%= article.name %></td>
-      <td><%= article.id %></td>
-      <td><%= link_to 'Show', article %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</p>
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>

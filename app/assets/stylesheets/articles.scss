@@ -1,3 +1,64 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.article-name {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+  color: #D72130;
+  text-transform: uppercase;
+}
+.article-image {
+  width: 75%;
+}
+.card-on-image {
+  position: absolute;
+  width: 421px;
+  height: 251px;
+  background: #F6F6F6;
+  right: 3%;
+  top: 25%;
+  padding-top: 50px;
+  padding-left: 30px;
+}
+.card-with-image {
+  display: flex;
+}
+.published {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #7F7B7B;
+}
+.card-article-name {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #C63638;
+  text-transform: capitalize;
+}
+.card-article-short-text {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  color: #2B2F43;
+}
+.article-text {
+  margin-top: 3%;
+  width: 75%;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 25px;
+  color: #000000;
+  margin-bottom: 10%;
+}
