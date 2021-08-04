@@ -6,8 +6,6 @@
 <% else %>
   <%= link_to 'Sign Up', new_user_registration_path %> <span> or if you have account </span> <%= link_to 'Sign In', new_user_session_path %>
 <% end %>
-</head>
-<body>
 
 <div class="slideshow-container">
   <% @articles.each do |article| %>
@@ -57,14 +55,3 @@
         dots[slideIndex-1].className += " active";
     }
 </script>
-<!--<div class="main-slider">-->
-<!--  <div>-->
-<!--    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVJRd6TbbQKVxICTorQVN0H3b26sbY0yaVNw&usqp=CAU">-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQygEYElKAIT3-NWS8Hos1jpmWBxJW2LYNBqg&usqp=CAU">-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <img src="https://cdn2.unrealengine.com/2ksmkt-nba2k21-epic-set-up-assets-std-cg-blog-share-image-1920x1080-1920x1080-d46c9713e326.jpg">-->
-<!--  </div>-->
-<!--</div>-->

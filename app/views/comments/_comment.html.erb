@@ -1,0 +1,27 @@
+<% @comments.each do |c| %>
+  <div class="unique-comment">
+    <div class="comment-user-email">
+      <%= c.user.email %>
+    </div>
+    <div class="comment-created-at">
+      <%= c.created_at.strftime('%F') %>
+    </div>
+    <div class="comment-info">
+      <%= c.comment%>
+    </div>
+  <div class="like-count">
+    <%= c.get_upvotes.size %>
+  </div>
+  <%= link_to like_article_comment_path(c), class: "like-btn", method: :put, remote: :true do %>
+  <div>
+    <span>
+      <p>
+        <i class="fa fa-thumbs-up fa-2x"></i>
+      </p>
+    </span>
+  </div>
+  <% end %>
+    <span class="likes-count"><%= c.get_upvotes.size %></span>
+  <%= link_to "Delete", article_comment_path(c.article_id, c.id), method: :delete, class: "delete-comment"%>
+  </div>
+<% end %>

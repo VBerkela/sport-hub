@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @comment = Comment.new
+    @comments = @article.comments
   end
 
   # GET /articles/new
