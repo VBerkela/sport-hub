@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
-    @articles = Article.joins(:category).where(categories: { id: params[:id] }).all
+    @pagy, @articles = pagy(Article.joins(:category).where(categories: { id: params[:id] }).all, items: 5)
   end
 
   # GET /categories/new

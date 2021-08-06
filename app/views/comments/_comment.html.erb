@@ -9,10 +9,10 @@
     <div class="comment-info">
       <%= c.comment%>
     </div>
-  <div class="like-count">
-    <%= c.get_upvotes.size %>
+  <div class="likes-count">
+    Likes: <%= c.get_upvotes.size %>
   </div>
-  <%= link_to like_article_comment_path(c), class: "like-btn", method: :put, remote: :true do %>
+  <%= link_to like_article_comment_path(:article_id => c.article_id, :id => c.id), class: "like-btn", method: :put, remote: :true do %>
   <div>
     <span>
       <p>

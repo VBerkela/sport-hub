@@ -1,4 +1,4 @@
-<%= form_with(model: article) do |form| %>
+<%= form_with(model: article, class:"article-form") do |form| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="input-group mb-3">
+    <%= form.label :name, class: "form-label"%>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="input-group mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+  <div class="input-group mb-3">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image, class: "form-control", id:"inputGroupFile01" %>
   </div>
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
+  <div class="input-group mb-3">
+    <%= form.label :author, class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :is_hidden %>
-    <%= form.check_box :is_hidden %>
+  <div class="input-group mb-3">
+    <%= form.label :is_hidden, class: "form-check-label" %>
+    <%= form.check_box :is_hidden, class: "form-check-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+  <div class="input-group mb-3">
+    <%= form.label :category_id, class: "form-label" %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, class:"form-select")%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>

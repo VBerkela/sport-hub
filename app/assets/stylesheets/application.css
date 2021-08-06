@@ -224,3 +224,30 @@ div.content {
 input[type="search"] {
     border: none;
 }
+.prev, .next {
+    position: relative;
+    padding: 10px;
+    margin-top: 0px;
+    font-weight: 100;
+    font-family: Open Sans;
+}
+.prev > a, .next > a {
+    color: black;
+}
+.page > a {
+    color: black;
+}
+.prev:hover, .next:hover {
+    background-color: transparent;
+}
+span.page.active {
+    text-decoration: underline;
+}
+.pagination {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
+.active, .dot:hover {
+    background-color: transparent;
+}

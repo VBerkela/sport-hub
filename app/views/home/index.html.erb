@@ -1,22 +1,25 @@
-<h1>Main page</h1>
-<% if user_signed_in? %>
-  <h3>Welcome!</h3>
-  <h1><%= t(:hello) %></h1>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign Up', new_user_registration_path %> <span> or if you have account </span> <%= link_to 'Sign In', new_user_session_path %>
-<% end %>
-
 <div class="slideshow-container">
   <% @articles.each do |article| %>
     <div class="mySlides fade">
-      <div class="numbertext"><%= article.id %> / <%=@articles_counter %></div>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVJRd6TbbQKVxICTorQVN0H3b26sbY0yaVNw&usqp=CAU" style="width:100%">
-      <div class="text"><%= article.description %> / <%= article.name %></div>
+      <p class="article-name">
+        <%= article.name %>
+      </p>
+      <div class="card-with-image">
+        <% if article.image.attached? %>
+          <%= image_tag(article.image, class:'article-image')  %>
+          <span class="card-on-image">
+      <p class="published">Published / <%= article.created_at %></p>
+      <p class="card-article-name"><%= article.name %></p>
+      <p class="card-article-short-text"><%= article.description.first(80) %>...</p>
+    </span>
+        <% else %>
+          <p>Empty</p>
+        <% end %>
+      </div>
     </div>
   <% end %>
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
 
 </div>
 <br>
@@ -26,7 +29,18 @@
   <span class="dot" onclick="currentSlide(<% i %>)"></span>
   <% end %>
 </div>
-
+<div class="articles-grid">
+  <% @articles.each do |article| %>
+    <div class="card" style="width: 18rem;">
+      <%= image_tag(article.image, class:'card-img-top')  %>
+      <div class="card-body">
+        <h5 class="card-title"><%= article.name %></h5>
+        <p class="card-text"><%= article.description.first(20) %>...</p>
+        <%= link_to "Read article", article_path(article.id), class: "btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>
 <script>
     var slideIndex = 1;
     showSlides(slideIndex);

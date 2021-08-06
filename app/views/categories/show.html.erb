@@ -9,10 +9,12 @@
     <% @articles.each do |article| %>
       <li class="list-group-item"><td><%= link_to article.name, article %></td></li>
     <% end %>
+    <%== pagy_nav(@pagy) %>
   </ul>
   <div class="card-body">
-    <%= link_to 'Edit', edit_category_path(@category) %>
+    <% if current_user.is_admin %>
+      <%= link_to 'Edit', edit_category_path(@category) %>
+    <% end %>
     <%= link_to 'Back', categories_path %>
   </div>
 </div>
-
