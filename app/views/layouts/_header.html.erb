@@ -17,8 +17,7 @@
         <button class="dropbtn"><%= current_user.full_name %> <i class="fa fa-caret-down"></i></button>
         <div class="dropdown-content">
           <%= link_to 'Edit Account', edit_user_registration_path %>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
         </div>
       </div>
     <% else %>

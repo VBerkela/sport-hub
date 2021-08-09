@@ -17,11 +17,16 @@
 <p class="article-text">
   <%= @article.description %>
 </p>
-
-<!--<p>-->
-<!--  <strong>Author:</strong>-->
-  <%#= @article.author %>
-<!--</p>-->
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="comments">
+  <p class="comments-count">Comments (<%= @comments.count %>)</p>
+  <%= render "comments/form" %>
+  <div class="latest-comments">
+    <%= render(@comments) %>
+  </div>
+</div>
+<div class="control-btns">
+  <% if current_user.is_admin %>
+    <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to 'All articles', articles_path, class: "btn btn-primary" %>
+</div>

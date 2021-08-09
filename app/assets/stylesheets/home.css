@@ -119,3 +119,32 @@ img {
         font-size: 11px
     }
 }
+#prev, #next {
+    position: absolute;
+}
+.article-image {
+    width: 75%;
+    /* height: 100px; */
+    display: block;
+    height: fit-content;
+    margin: auto;
+}
+.card-with-image {
+    height: 460px;
+}
+.active, .dot:hover {
+    background-color: #D72130!important;
+}
+.articles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+.articles-grid .card:hover {
+    transform: scale(1.2);
+}
+.articles-grid .card {
+    transition: all .2s ease-in-out;
+    width: 22%;
+    margin-right: 2%;
+}

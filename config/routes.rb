@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   scope '(:locale)' do
-    resources :articles
+    resources :articles do
+      resources :comments do
+        member do
+          put "like" => "comments#vote"
+        end
+      end
+    end
     resources :categories
     devise_for :users
 
