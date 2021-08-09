@@ -21,7 +21,7 @@
   <p class="comments-count">Comments (<%= @comments.count %>)</p>
   <%= render "comments/form" %>
   <div class="latest-comments">
-    <%= render "comments/comment" %>
+    <%= render(@comments) %>
   </div>
 </div>
 <div class="control-btns">

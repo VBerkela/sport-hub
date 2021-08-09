@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @pagy, @articles = pagy(Article.all, items: 10)
+    @pagy, @articles = pagy(Article.all, items: params.has_key?(:per_page) ? params[:per_page] : Article::PAGINATION_ITEMS)
   end
 
   # GET /articles/1 or /articles/1.json
