@@ -1,11 +1,16 @@
 class ApplicationController < ActionController::Base
   include Pundit
   include Pagy::Backend
+  before_action :set_search
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :switch_locale
 
   rescue_from Pundit::NotAuthorizedError do |exception|
     redirect_to root_url, alert: exception.message
+  end
+
+  def set_search
+    @q=Article.search(params[:q])
   end
 
   def switch_locale(&action)

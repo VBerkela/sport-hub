@@ -7,10 +7,22 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :categories
+    get 'messages/index'
+    resources :messages
+    resources :categories, except: [:new, :create, :edit]
     devise_for :users
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     root 'home#index'
+    namespace :admin do
+      resources :articles, except: [:show] do
+        resources :comments, except: [:show] do
+          member do
+            put "like" => "comments#vote"
+          end
+        end
+      end
+      resources :categories, only: [:new, :create, :edit, :destroy, :update]
+    end
   end
 end

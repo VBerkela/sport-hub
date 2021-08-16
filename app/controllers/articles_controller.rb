@@ -1,15 +1,23 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_search, :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
   def index
-    @pagy, @articles = pagy(Article.all, items: params.has_key?(:per_page) ? params[:per_page] : Article::PAGINATION_ITEMS)
+    @q = Article.ransack(params[:q])
+    @result = @q.result(distinct: true)
+    @pagy, @articles = pagy(@result, items: params.has_key?(:per_page) ? params[:per_page] : Article::PAGINATION_ITEMS)
   end
 
   # GET /articles/1 or /articles/1.json
   def show
     @comment = Comment.new
     @comments = @article.comments
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name", template: "articles/show.html.erb"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
   # GET /articles/new
