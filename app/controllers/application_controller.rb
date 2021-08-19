@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: exception.message
   end
 
+  protected
   def set_search
     @q=Article.search(params[:q])
   end
@@ -22,7 +23,6 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
-  protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:full_name])

@@ -10,11 +10,6 @@ class Admin::CategoriesController < ApplicationController
     super([:admin, record], query)
   end
 
-  def require_admin
-    unless current_user.is_admin?
-      redirect_to root_path
-    end
-  end
   # Methods omitted
   # GET /categories/new
   def new
@@ -51,7 +46,6 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: "Category was successfully created." }
@@ -64,6 +58,12 @@ class Admin::CategoriesController < ApplicationController
   end
 
   private
+  def require_admin
+    unless current_user.is_admin?
+      redirect_to root_path
+    end
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_category
     @category = Category.find(params[:id])

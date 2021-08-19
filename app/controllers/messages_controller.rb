@@ -1,6 +1,4 @@
 class MessagesController < ApplicationController
-  before_action :set_search
-
   def index
     @message = Message.new
   end
