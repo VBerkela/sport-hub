@@ -3,13 +3,20 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @pagy, @articles = pagy(Article.all, items: params.has_key?(:per_page) ? params[:per_page] : Article::PAGINATION_ITEMS)
+    @result = @q.result(distinct: true)
+    @pagy, @articles = pagy(@result, items: params.has_key?(:per_page) ? params[:per_page] : Article::PAGINATION_ITEMS)
   end
 
   # GET /articles/1 or /articles/1.json
   def show
     @comment = Comment.new
     @comments = @article.comments
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name", template: "articles/show.html.erb"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
   # GET /articles/new

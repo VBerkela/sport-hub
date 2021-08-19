@@ -23,6 +23,9 @@ gem 'rails-i18n', '~> 6.0'
 gem 'httparty', '~> 0.18.1'
 gem 'acts_as_votable', '~> 0.13.1'
 gem 'pagy', '~> 4.10', '>= 4.10.1'
+gem 'ransack', '~> 2.4', '>= 2.4.2'
+gem 'wicked_pdf', '~> 2.1'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

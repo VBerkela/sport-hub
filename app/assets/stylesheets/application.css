@@ -223,6 +223,7 @@ div.content {
 
 input[type="search"] {
     border: none;
+    outline: none;
 }
 .prev, .next {
     position: relative;
@@ -248,6 +249,6 @@ span.page.active {
     width: 60%;
     margin: 0 auto;
 }
-.active, .dot:hover {
-    background-color: transparent;
+nav.pagy-nav.pagination > .active, .dot:hover {
+    background-color: transparent!important;
 }

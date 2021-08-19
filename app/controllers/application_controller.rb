@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
   include Pundit
   include Pagy::Backend
+  before_action :set_search
   before_action :configure_permitted_parameters, if: :devise_controller?
   around_action :switch_locale
 
   rescue_from Pundit::NotAuthorizedError do |exception|
     redirect_to root_url, alert: exception.message
+  end
+
+  protected
+  def set_search
+    @q=Article.search(params[:q])
   end
 
   def switch_locale(&action)
@@ -17,7 +23,6 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
-  protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:full_name])

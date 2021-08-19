@@ -10,8 +10,9 @@
   color: #D72130;
   text-transform: uppercase;
 }
-.article-image {
-  width: 75%;
+.article-image-page {
+  width: auto!important;
+  height: 100%!important;
 }
 .card-on-image {
   position: absolute;
@@ -20,6 +21,16 @@
   background: #F6F6F6;
   right: 3%;
   top: 25%;
+  padding-top: 50px;
+  padding-left: 30px;
+}
+.card-on-image-page {
+  position: absolute;
+  width: 421px;
+  height: 251px;
+  background: #F6F6F6;
+  right: 15%;
+  top: 30%;
   padding-top: 50px;
   padding-left: 30px;
 }
