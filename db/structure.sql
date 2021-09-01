@@ -47,6 +47,8 @@ CREATE INDEX "index_votes_on_votable_id_and_votable_type_and_vote_scope" ON "vot
 CREATE TABLE IF NOT EXISTS "action_text_rich_texts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "body" text, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE UNIQUE INDEX "index_action_text_rich_texts_uniqueness" ON "action_text_rich_texts" ("record_type", "record_id", "name");
 CREATE TABLE IF NOT EXISTS "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE TABLE IF NOT EXISTS "action_mailbox_inbound_emails" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" integer DEFAULT 0 NOT NULL, "message_id" varchar NOT NULL, "message_checksum" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+CREATE UNIQUE INDEX "index_action_mailbox_inbound_emails_uniqueness" ON "action_mailbox_inbound_emails" ("message_id", "message_checksum");
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210721152656'),
 ('20210722114011'),
@@ -66,6 +68,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210803145636'),
 ('20210803165350'),
 ('20210812102454'),
-('20210812151607');
+('20210812151607'),
+('20210817113654');
 
 

@@ -5,6 +5,7 @@ class Admin::HomeController < ApplicationController
     @articles_counter = @articles.count
   end
 
+  private
   def require_admin
     unless current_user.is_admin?
       redirect_to root_path

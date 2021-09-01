@@ -55,10 +55,14 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'capybara', '~> 3.35', '>= 3.35.3'
+  gem 'rspec-core', '~> 3.10', '>= 3.10.1'
+  gem 'rspec-expectations', '~> 3.10', '>= 3.10.1'
+  gem 'rspec-mocks', '~> 3.10', '>= 3.10.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
