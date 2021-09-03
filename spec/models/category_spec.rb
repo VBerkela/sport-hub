@@ -6,13 +6,13 @@ RSpec.describe Category, type: :model do
     it 'ensures name presence' do
       # category = Category.new(description: 'Very interesting category').save
       category.name = nil
-      expect(category).to eq(false)
+      expect(category.save).to eq(false)
     end
 
     it 'ensures description presence' do
       # category = Category.new(name: 'Test').save
       category.description = nil
-      expect(category).to eq(false)
+      expect(category.save).to eq(false)
     end
 
     it 'should save successfully' do
