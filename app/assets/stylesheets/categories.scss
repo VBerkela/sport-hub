@@ -1,3 +1,14 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.pagination {
+  width: 300px !important;
+  margin: 30px auto 0!important;
+}
+.list-group {
+  width: 90%;
+  margin: 0 auto;
+}
+.card {
+  margin-bottom: 100px;
+}

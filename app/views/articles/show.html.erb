@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<p class="article-name">
+  <%= @article.name %>
+</p>
+<div class="card-with-image">
+  <% if @article.image.attached? %>
+    <%= image_tag(@article.image, class:'article-image-page')  %>
+    <span class="card-on-image-page">
+      <p class="published">Published / <%= @article.created_at %></p>
+      <p class="card-article-name"><%= @article.name %></p>
+      <p class="card-article-short-text"><%= @article.description.first(80) %>...</p>
+    </span>
+  <% else %>
+  <p>Empty</p>
+<% end %>
+</div>
+<p class="article-text">
+  <%= @article.description %>
+</p>
+<div class="comments">
+  <p class="comments-count">Comments (<%= @comments.count %>)</p>
+  <%= render "comments/form" %>
+  <div class="latest-comments">
+    <%= render(@comments) %>
+  </div>
+</div>
+<div class="control-btns">
+  <% if current_user.is_admin %>
+    <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary" %>
+  <% end %>
+  <%= link_to 'All articles', articles_path, class: "btn btn-primary" %>
+  <%= link_to 'PDF', article_path(@article, format: :pdf), class: "btn btn-primary", target: "_blank" %>
+</div>

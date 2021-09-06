@@ -19,6 +19,15 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.2'
 gem 'pundit', '~> 2.1'
+gem 'rails-i18n', '~> 6.0'
+gem 'httparty', '~> 0.18.1'
+gem 'acts_as_votable', '~> 0.13.1'
+gem 'pagy', '~> 4.10', '>= 4.10.1'
+gem 'ransack', '~> 2.4', '>= 2.4.2'
+gem 'wicked_pdf', '~> 2.1'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+gem 'sidekiq', '~> 6.2', '>= 6.2.2'
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -48,10 +57,18 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'capybara', '~> 3.35', '>= 3.35.3'
+  gem 'rspec-core', '~> 3.10', '>= 3.10.1'
+  gem 'rspec-expectations', '~> 3.10', '>= 3.10.1'
+  gem 'rspec-mocks', '~> 3.10', '>= 3.10.2'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
+  gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+  gem 'cucumber-rails', '~> 2.4'
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

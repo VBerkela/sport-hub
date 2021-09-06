@@ -1,7 +1,71 @@
-<h1>Main page</h1>
-<% if user_signed_in? %>
-  <h3>Welcome!</h3>
-  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign Up', new_user_registration_path %> <span> or if you have account </span> <%= link_to 'Sign In', new_user_session_path %>
-<% end %>
+<div class="slideshow-container">
+  <% @articles.each do |article| %>
+    <div class="mySlides fade">
+      <p class="article-name">
+        <%= article.name %>
+      </p>
+      <div class="card-with-image">
+        <% if article.image.attached? %>
+          <%= image_tag(article.image, class:'article-image')  %>
+          <span class="card-on-image">
+      <p class="published">Published / <%= article.created_at %></p>
+      <p class="card-article-name"><%= article.name %></p>
+      <p class="card-article-short-text"><%= article.description.first(80) %>...</p>
+    </span>
+        <% else %>
+          <p>Empty</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <% for i in 1..@articles_counter %>
+  <span class="dot" onclick="currentSlide(<% i %>)"></span>
+  <% end %>
+</div>
+<div class="articles-grid">
+  <% @articles.each do |article| %>
+    <div class="card" style="width: 18rem;">
+      <%= image_tag(article.image, class:'card-img-top')  %>
+      <div class="card-body">
+        <h5 class="card-title"><%= article.name %></h5>
+        <p class="card-text"><%= article.description.first(20) %>...</p>
+        <%= link_to "Read article", article_path(article.id), class: "btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Articles</h1>
+<ol class="list-group list-group-numbered">
+  <% @articles.each do |article| %>
+    <li class="list-group-item">
+      <%= article.name %>
+      <div class="action-btns">
+        <%= link_to 'Show', article %>
+        <% if current_user.is_admin %>
+           | <%= link_to 'Edit', edit_article_path(article) %> |
+          <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ol>
+<br>
+<%== pagy_nav(@pagy) %>
+<div class="control-btns">
+  <%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
+  <%= link_to 'Back', :back, class: "btn btn-primary" %>
+</div>

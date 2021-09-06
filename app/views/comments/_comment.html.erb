@@ -1,0 +1,25 @@
+<div class="unique-comment">
+  <div class="comment-user-email">
+    <%= comment.user.email %>
+  </div>
+  <div class="comment-created-at">
+    <%= comment.created_at.strftime('%F') %>
+  </div>
+  <div class="comment-info">
+    <%= comment.comment %>
+  </div>
+  <div class="likes-count">
+    Likes: <%= comment.get_upvotes.size %>
+  </div>
+  <%= link_to like_article_comment_path(:article_id => comment.article_id, :id => comment.id), class: "like-btn", method: :put, remote: :true do %>
+    <div>
+    <span>
+      <p>
+        <i class="fa fa-thumbs-up fa-2x"></i>
+      </p>
+    </span>
+    </div>
+  <% end %>
+  <span class="likes-count"><%= comment.get_upvotes.size %></span>
+  <%= link_to "Delete", article_comment_path(comment.article_id, comment.id), method: :delete, class: "delete-comment" %>
+</div>

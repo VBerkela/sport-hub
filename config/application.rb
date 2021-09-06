@@ -5,9 +5,12 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
 
+HOSTNAME = ENV['HOSTNAME']
 module SportHub
   class Application < Rails::Application
+    config.active_record.schema_format = :sql
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
@@ -18,5 +21,7 @@ module SportHub
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    I18n.available_locales = [:en, :ua]
+    I18n.default_locale = :en
   end
 end
