@@ -27,6 +27,7 @@ gem 'ransack', '~> 2.4', '>= 2.4.2'
 gem 'wicked_pdf', '~> 2.1'
 gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 gem 'sidekiq', '~> 6.2', '>= 6.2.2'
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

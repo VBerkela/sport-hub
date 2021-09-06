@@ -94,7 +94,7 @@ Rails.application.configure do
     port:                 465,
     domain:               'gmail.com',
     user_name:            'vlad.berkela@gmail.com',
-    password:             'gesynjyazwrepmvh',
+    password:             ENV['SMTP_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: false,
     tls: true
