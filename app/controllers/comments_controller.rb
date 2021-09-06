@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create(comment_params)
 
     if @comment.save
+      CommentMailer.new_comment_email(@comment, current_user).deliver_now
       redirect_to @article
     end
   end
